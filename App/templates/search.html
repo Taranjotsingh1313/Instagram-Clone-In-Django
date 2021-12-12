@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Clone</title>
+    <link rel="stylesheet" href="{% static './css/index.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static './images/favicon.ico' %}"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <main>
+      <div class="post_story">
+        <div class="posts">
+          <!-- USER POSTS STARTS HERE -->
+          {% for profile in profiles %} {% if user in profile.followers.all %}
+          <div id="post">
+            <div id="post_header" style="padding: 0 60px">
+              <img src="{{profile.profile_picture.url}}" alt="" srcset="" />
+              <a href="/profile/{{profile.id}}">
+                <h4 id="post_user" style="font-weight: 900">
+                  {{profile.user}}
+                </h4>
+              </a>
+            </div>
+
+            <div class="lower">
+              <a
+                href="/follow/{{profile.id}}/{{username}}"
+                class="text-center btn btn-light text-dark"
+                id="like"
+              >
+                unfollow
+              </a>
+            </div>
+          </div>
+          {% else %}
+          <div id="post">
+            <div id="post_header" style="padding: 0 60px">
+              <img src="{{profile.profile_picture.url}}" alt="" srcset="" />
+              <a href="/profile/{{profile.id}}">
+                <h4 id="post_user" style="font-weight: 900">
+                  {{profile.user}}
+                </h4>
+              </a>
+            </div>
+
+            <div class="lower">
+              <a
+                href="/follow/{{profile.id}}/{{username}}"
+                class="text-center btn btn-danger"
+                id="like"
+              >
+                Follow
+              </a>
+            </div>
+          </div>
+          {% endif %} {% endfor %}
+          <!-- USER POST ENDS HERE -->
+        </div>
+      </div>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

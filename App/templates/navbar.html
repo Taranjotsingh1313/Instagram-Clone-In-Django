@@ -1,0 +1,67 @@
+<nav id="navbar">
+  {% load static %}
+  <div class="logo">
+    <img src="{% static './images/instagram logo.png' %}" alt="" />
+  </div>
+  <div class="search">
+    <form action="/search" method="GET">
+      <input type="text" placeholder="search" name="username" />
+      <button class="btn btn-primary">Search</button>
+    </form>
+  </div>
+  <ul class="class-lists">
+    <li class="home">
+      <a href="/">
+        <svg
+          aria-label="Home"
+          class="_8-yf5"
+          color="#262626"
+          fill="#262626"
+          height="22"
+          role="img"
+          viewBox="0 0 48 48"
+          width="22"
+        >
+          <path
+            d="M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z"
+          ></path>
+        </svg>
+      </a>
+    </li>
+    <li id="add">
+      <a href="/uploadpost">
+        <img src="{% static './images/add (1).PNG' %}" alt="" />
+      </a>
+    </li>
+    <li id="reel" class="nav-item dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="navbarDropdown"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img src="{% static './images/reel.png' %}" alt="" />
+      </a>
+
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li>
+          <a
+            class="dropdown-item"
+            href="/upload_reel
+              "
+            >Upload Reel</a
+          >
+        </li>
+        <li>
+          <a class="dropdown-item" href="/reels">Explore Reels</a>
+        </li>
+      </ul>
+    </li>
+    <li id="profile">
+      <a href="/profile"><img src="{{profileimage}}" alt="" id="profile" /> </a>
+    </li>
+  </ul>
+  <h5>{{request.user}}</h5>
+</nav>

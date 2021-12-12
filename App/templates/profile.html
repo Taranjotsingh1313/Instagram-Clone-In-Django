@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Clone</title>
+    <link rel="stylesheet" href="{% static './css/index.css' %}" />
+    <link
+      rel="shortcut icon"
+      href="{% static './images/favicon.ico' %}"
+      type="image/x-icon"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+   {% include 'navbar.html' %}   {% comment %} {% if profile_of_user %}
+    <div class="container">
+      <div class="d-flex header justify-content-around align-items-center my-3">
+        <img
+          src="{{profile.profile_picture.url}}"
+          width="22"
+          height="22"
+          class="rounded-circle"
+          alt="..."
+          style="width: 55px; height: 55px"
+        />
+        <div
+          class="d-flex justify-content-around align-items-center"
+          style="width: 50vw"
+        >
+          <div class="d-flex flex-column">
+            <h5>Posts</h5>
+            <h5>{{posts_num}}</h5>
+          </div>
+          <div class="d-flex flex-column">
+            <h5>Followers</h5>
+            <h5>{{profile.followers.count}}</h5>
+          </div>
+          <div class="d-flex flex-column">
+            <h5>Following</h5>
+            <h5>{{profile.followings.count}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% for post in posts %}
+
+        <div class="col-sm m-3">
+          <div class="card" style="width: 18rem">
+            <img src="{{post.image.url}}" class="card-img-top" alt="..." />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %} {% endcomment %}
+    <div class="container">
+      <div class="d-flex header justify-content-around align-items-center my-3">
+        <img
+          src="{{profile.profile_picture.url}}"
+          width="22"
+          height="22"
+          class="rounded-circle"
+          alt="..."
+          style="width: 55px; height: 55px"
+        />
+        <div
+          class="d-flex justify-content-around align-items-center"
+          style="width: 50vw"
+        >
+          <div class="d-flex flex-column">
+            <h5>Posts</h5>
+            <h5>{{posts_num}}</h5>
+          </div>
+          <div class="d-flex flex-column">
+            <h5>Followers</h5>
+            <h5>{{profile.followers.count}}</h5>
+          </div>
+          <div class="d-flex flex-column">
+            <h5>Following</h5>
+            <h5>{{profile.followings.count}}</h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% for post in posts %}
+
+        <div class="col-sm m-3">
+          <div class="card" style="width: 18rem">
+            <img src="{{post.image.url}}" class="card-img-top" alt="..." />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% comment %} {% endif %} {% endcomment %}
+    <script src="./script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
